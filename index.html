@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Agreement for Mahi</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #FFF7E5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1, h2, p {
+            text-align: center;
+            margin: 0 20px;
+        }
+
+        h1 {
+            color: #FF6F61;
+        }
+
+        h2 {
+            color: #4CAF50;
+        }
+
+        p {
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .agreement-card {
+            background: #FFFFFF;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .signature-box {
+            margin: 20px 0;
+        }
+
+        .signature-input {
+            border: 2px solid #FF6F61;
+            border-radius: 5px;
+            padding: 8px;
+            width: 80%;
+            text-align: center;
+        }
+
+        .submit-btn {
+            background: #FF6F61;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .submit-btn:hover {
+            background: #FF4B4B;
+        }
+
+        .download-btn {
+            display: none;
+            background: #4CAF50;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .download-btn:hover {
+            background: #45A049;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 500px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .agreement-card {
+                padding: 15px;
+            }
+
+            .submit-btn, .download-btn {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="agreement-section" class="agreement-card">
+        <h1>✨ Agreement ✨</h1>
+        <h2>Promise to Stay Healthy! 🌟</h2>
+        <p>Dear Mahi, 💖</p>
+        <p>Do you promise to eat healthy food 🍎🥦 and focus on your studies 📚 every day? 🐾</p>
+        <p>If yes, please sign below! ✍️</p>
+
+        <div class="signature-box">
+            <input type="text" class="signature-input" placeholder="Type your name here">
+        </div>
+
+        <button class="submit-btn" onclick="submitAgreement()">✅ I Promise</button>
+        <button class="download-btn" id="download-btn" onclick="downloadImage()">📥 Share/Download</button>
+    </div>
+
+    <script>
+        function submitAgreement() {
+            const name = document.querySelector('.signature-input').value.trim();
+            if (name) {
+                alert(`Thank you, ${name}! 🎉 You have promised to stay healthy and study well! 🌟`);
+                document.getElementById('download-btn').style.display = 'inline-block';
+            } else {
+                alert("Please type your name to sign the agreement. 😊");
+            }
+        }
+
+        function downloadImage() {
+            const agreement = document.getElementById('agreement-section');
+            html2canvas(agreement).then((canvas) => {
+                const link = document.createElement('a');
+                link.download = 'Healthy_Agreement.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        }
+    </script>
+</body>
+
+  </html>
